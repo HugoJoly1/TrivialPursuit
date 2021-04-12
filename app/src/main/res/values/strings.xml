@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TP</string>
+    <string name="Th1">Histoire</string>
+    <string name="Th2">Sciences</string>
+    <string name="Th2_Q1">Question</string>
+    <string name="Th2_Q1_R1">Réponse1</string>
+    <string name="Th2_Q1_R2">Répponse2</string>
+</resources>
