@@ -4,6 +4,8 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
+import java.util.*
+import kotlin.concurrent.schedule
 
 class Pion(val x1: Float,val y1: Float, val joueur: Int) {
 
@@ -50,7 +52,15 @@ class Pion(val x1: Float,val y1: Float, val joueur: Int) {
                 avance(cases[position])
         }
         if (cases[position] is CaseAction){
-            reculeCase(cases[position])
+            //var myToast: Toast
+
+            Timer().schedule(600) {
+                reculeCase(cases[position])
+                //myToast = Toast.makeText(this, "Pas de chance! Recule d'une case", Toast.LENGTH_LONG)
+                //myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,0)
+                //myToast.show()
+            }
+
         }
         return resultatDe
     }
@@ -68,6 +78,19 @@ class Pion(val x1: Float,val y1: Float, val joueur: Int) {
             r.offset(0f,0f)
         }
         position -= 1
+    }
+
+    fun messagePasDeChance(canvas: Canvas?){
+        // Trouver comment le rendre non permanent
+        val message = "Pas de chance! Recule d'une case"
+        val x = 500f
+        val y = 1700f
+
+        val paintMessage = Paint()
+        paintMessage.color = Color.BLACK
+        paintMessage.textSize = 70f
+
+        canvas?.drawText(message,x,y,paintMessage)
     }
 
 }

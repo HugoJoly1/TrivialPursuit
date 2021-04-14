@@ -18,4 +18,10 @@ class CaseFin(x1: Float, y1: Float, x2: Float, y2: Float, numero: Int) : Case(x1
         canvas.drawRect(r,paint)
         canvas.drawText(nom, this.x1+10f, this.y2+50f, paintText)
     }
+
+    fun gagne(){
+        // Trouver comment faire apparaitre le fragment
+        //GameWinDialogFragment.show()
+
+    }
 }
