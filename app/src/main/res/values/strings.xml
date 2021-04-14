@@ -1,10 +1,17 @@
 <resources>
     <string name="app_name">TP</string>
+
     <string name="Th1">Histoire</string>
     <string name="Th2">Sciences</string>
+    <string name="Th3">Divertissement</string>
+    <string name="Th4">Litterature</string>
+    <string name="Th5">Geographie</string>
+    <string name="Th6">Loisir</string>
+
     <string name="Th2_Q1">Question</string>
     <string name="Th2_Q1_R1">Réponse1</string>
     <string name="Th2_Q1_R2">Réponse2</string>
     <string name="Th2_Q1_R3">Réponse3</string>
     <string name="lance_le_d">Lance le dé</string>
+
 </resources>

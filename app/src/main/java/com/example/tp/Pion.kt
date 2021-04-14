@@ -62,7 +62,7 @@ class Pion(val x1: Float,val y1: Float, val joueur: Int) {
             r.offset(-dx,0f)
         } else if(caseDebut.numero in 4..5 || caseDebut.numero in 9..10 || caseDebut.numero in 14..15){
             r.offset(0f,-dy)
-        } else if(caseDebut.numero in 6..8|| caseDebut.numero in 16..18 ){
+        } else if(caseDebut.numero in 6..8|| caseDebut.numero in 16..18){
             r.offset(dx, 0f)
         }else{
             r.offset(0f,0f)

@@ -15,8 +15,8 @@ class Load(private val context: Context) {
             context.getString(id)
         }
     }
-    fun Questionsload(): MutableMap<MutableList<Question>, String> {
-        var Questions: MutableMap<MutableList<Question>,String> = mutableMapOf()
+    fun Questionsload(): MutableMap<String, MutableList<Question>> {
+        var Questions: MutableMap<String,MutableList<Question>> = mutableMapOf()
         var Q: Question
         var Enoncé: String
         val Themes = StrListload("Th")
@@ -32,7 +32,7 @@ class Load(private val context: Context) {
                     j++
                 }
             }
-            Questions[list] = Themes[i-1]
+            Questions[Themes[i-1]] = list
         }
         return Questions
     }
