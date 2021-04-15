@@ -20,6 +20,7 @@ class MainActivity : Activity() {
         val Themes = Load(this).StrListload("Th")
         val Questions = Load(this).Questionsload()
 
+
         drawingView = findViewById<PlateauView>(R.id.vPlateau)
         val dice = Dice(6)
         val rollButton: Button = findViewById(R.id.lanceDe)

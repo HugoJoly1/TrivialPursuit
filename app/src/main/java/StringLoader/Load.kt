@@ -1,26 +1,27 @@
 package StringLoader
 
 import android.content.Context
+import android.content.res.Resources
 import com.example.tp.Question
+import com.example.tp.Theme
 
 
 class Load(private val context: Context) {
 
 
     fun Stringload(Nom: String): String {
-            val id:Int = context.getResources().getIdentifier( Nom, "string", context.getPackageName())
+        val id:Int = context.getResources().getIdentifier( Nom, "string", context.getPackageName())
         return if (id==0) {
             ""
         } else {
             context.getString(id)
         }
     }
-    fun Questionsload(): MutableMap<String, MutableList<Question>> {
-        var Questions: MutableMap<String,MutableList<Question>> = mutableMapOf()
-        var Q: Question
+    fun Questionsload(): List<Theme> {
+        val Thèmes: MutableList<Theme> = mutableListOf()
         var Enoncé: String
-        val Themes = StrListload("Th")
-        for(i in 1..Themes.size){
+        val temp = StrListload("Th")
+        for(i in 1..temp.size){
             var list: MutableList<Question> = mutableListOf()
             var j: Int = 1
             while(true){
@@ -28,13 +29,20 @@ class Load(private val context: Context) {
                 val i1 = if (Enoncé == "")
                     break
                 else {
-                    list.add(Question(Themes[i - 1], Enoncé, StrListload("Th${i}_Q${j}_R")))
+                    list.add(Question(Enoncé, StrListload("Th${i}_Q${j}_R")))
                     j++
                 }
             }
-            Questions[Themes[i-1]] = list
+            Thèmes.add(
+                Theme(
+                    temp[i - 1],
+                    context.getResources()
+                        .getIdentifier("Th${i}", "color", context.getPackageName()),
+                    list
+                )
+            )
         }
-        return Questions
+        return Thèmes
     }
 
 
