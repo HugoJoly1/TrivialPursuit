@@ -1,5 +1,6 @@
 package com.example.tp
 
+import StringLoader.Load
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -17,7 +18,8 @@ class PlateauView @JvmOverloads constructor (context: Context,
 
     val backgroundPaint = Paint()
     var drawing: Boolean = true
-    val listTheme = arrayOf("litterature", "histoire", "sciences", "loisir","geographie","divertissement")
+    val listTheme = Load().Themeload()
+
 
     lateinit var thread: Thread
     lateinit var lesCases: Array<Case>
@@ -33,22 +35,22 @@ class PlateauView @JvmOverloads constructor (context: Context,
 
         lesCases = arrayOf(
                 CaseDepart(100f,300f,300f,100f,0),
-                CaseTheme(300f,300f,500f,100f,1, listTheme[0]),
-                CaseTheme(500f,300f,700f,100f,2, listTheme[1]),
-                CaseTheme(700f,300f,900f,100f,3, listTheme[2]),
-                CaseTheme(700f,500f,900f,300f,4, listTheme[3]),
-                CaseTheme(700f,700f,900f,500f,5, listTheme[4]),
+                CaseTheme(300f,300f,500f,100f,1, listTheme),
+                CaseTheme(500f,300f,700f,100f,2, listTheme),
+                CaseTheme(700f,300f,900f,100f,3, listTheme),
+                CaseTheme(700f,500f,900f,300f,4, listTheme),
+                CaseTheme(700f,700f,900f,500f,5, listTheme),
                 CaseAction(500f,700f,700f,500f,6),
-                CaseTheme(300f,700f,500f,500f,7, listTheme[5]),
-                CaseTheme(100f,700f,300f,500f,8, listTheme[1]),
-                CaseTheme(100f,900f,300f,700f,9, listTheme[3]),
-                CaseTheme(100f,1100f,300f,900f, 10, listTheme[0]),
-                CaseTheme(300f,1100f,500f,900f, 11, listTheme[4]),
-                CaseTheme(500f,1100f,700f,900f, 12, listTheme[5]),
-                CaseTheme(700f,1100f,900f,900f,13, listTheme[2]),
-                CaseTheme(700f,1300f,900f,1100f,14, listTheme[1]),
-                CaseTheme(700f,1500f,900f,1300f,15, listTheme[4]),
-                CaseTheme(500f,1500f,700f,1300f,16, listTheme[0]),
+                CaseTheme(300f,700f,500f,500f,7, listTheme),
+                CaseTheme(100f,700f,300f,500f,8, listTheme),
+                CaseTheme(100f,900f,300f,700f,9, listTheme),
+                CaseTheme(100f,1100f,300f,900f, 10, listTheme),
+                CaseTheme(300f,1100f,500f,900f, 11, listTheme),
+                CaseTheme(500f,1100f,700f,900f, 12, listTheme),
+                CaseTheme(700f,1100f,900f,900f,13, listTheme),
+                CaseTheme(700f,1300f,900f,1100f,14, listTheme),
+                CaseTheme(700f,1500f,900f,1300f,15, listTheme),
+                CaseTheme(500f,1500f,700f,1300f,16, listTheme),
                 CaseAction(300f,1500f,500f,1300f,17),
                 CaseFin(100f,1500f,300f,1300f,18)
         )

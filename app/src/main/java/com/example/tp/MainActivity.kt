@@ -11,14 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : Activity() {
 
+
     lateinit var drawingView: PlateauView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val Themes = Load(this).StrListload("Th")
-        val Questions = Load(this).Questionsload()
 
 
         drawingView = findViewById<PlateauView>(R.id.vPlateau)

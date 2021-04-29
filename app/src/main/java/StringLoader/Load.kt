@@ -1,13 +1,17 @@
 package StringLoader
 
+
+
+
 import android.content.Context
-import android.content.res.Resources
+import com.example.tp.MainApplication
 import com.example.tp.Question
 import com.example.tp.Theme
 
 
-class Load(private val context: Context) {
+class Load() {
 
+    var context: Context = MainApplication.applicationContext()
 
     fun Stringload(Nom: String): String {
         val id:Int = context.getResources().getIdentifier( Nom, "string", context.getPackageName())
@@ -17,7 +21,7 @@ class Load(private val context: Context) {
             context.getString(id)
         }
     }
-    fun Questionsload(): List<Theme> {
+    fun Themeload(): List<Theme> {
         val Thèmes: MutableList<Theme> = mutableListOf()
         var Enoncé: String
         val temp = StrListload("Th")
@@ -36,8 +40,7 @@ class Load(private val context: Context) {
             Thèmes.add(
                 Theme(
                     temp[i - 1],
-                    context.getResources()
-                        .getIdentifier("Th${i}", "color", context.getPackageName()),
+                    context.getString(context.getResources().getIdentifier("Th${i}", "color", context.getPackageName())),
                     list
                 )
             )
@@ -62,3 +65,4 @@ class Load(private val context: Context) {
         return List
     }
 }
+
