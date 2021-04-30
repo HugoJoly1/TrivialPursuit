@@ -17,8 +17,9 @@ class PlateauView @JvmOverloads constructor (context: Context,
     lateinit var canvas: Canvas
 
     val backgroundPaint = Paint()
+    var listTheme = Load().Themeload()
     var drawing: Boolean = true
-    val listTheme = Load().Themeload()
+
 
 
     lateinit var thread: Thread
