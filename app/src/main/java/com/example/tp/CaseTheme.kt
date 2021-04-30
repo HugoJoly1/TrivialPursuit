@@ -7,8 +7,11 @@ import android.graphics.Paint
 class CaseTheme( x1: Float, y1: Float, x2: Float, y2: Float,numero: Int, val listTheme:List<Theme>): Case(x1, y1, x2, y2, numero) {
     //On pourrait mettre le listTheme.random() directement lorsqu'on invoque la casetheme dans le plateau view comme ça on fait pas tout passer à chaque fois
 
-    val Theme = listTheme.random()
-    var couleurFond = Color.parseColor(Theme.Couleur)
+    val theme = listTheme.random()
+    val question = theme.Questions.random()
+    val titre = question.enoncé
+    val reponses = question.réponses
+    var couleurFond = Color.parseColor(theme.Couleur)
     var couleurNum = R.color.black
     val paintNum = Paint()
 
@@ -21,4 +24,5 @@ class CaseTheme( x1: Float, y1: Float, x2: Float, y2: Float,numero: Int, val lis
         canvas.drawText(numero.toString(),x1+10f, y2+50f, paintNum)
 
     }
+
 }

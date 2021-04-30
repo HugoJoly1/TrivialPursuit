@@ -4,12 +4,13 @@ import StringLoader.Load
 import android.app.Activity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
 
 
     lateinit var drawingView: PlateauView
@@ -39,6 +40,8 @@ class MainActivity : Activity() {
                     myToast = Toast.makeText(this, "Joueur 1 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
+                    onQuestion(drawingView)
+
                 }
                 compteurJoueur%4 == 1 -> {
                     res = pion2.joue(cases,dice)
@@ -46,6 +49,7 @@ class MainActivity : Activity() {
                     myToast = Toast.makeText(this, "Joueur 2 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
+                    onQuestion(drawingView)
                 }
                 compteurJoueur%4 == 2 -> {
                     res = pion3.joue(cases,dice)
@@ -53,6 +57,7 @@ class MainActivity : Activity() {
                     myToast = Toast.makeText(this, "Joueur 3 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
+                    onQuestion(drawingView)
                 }
                 else -> {
                     res = pion4.joue(cases,dice)
@@ -60,6 +65,7 @@ class MainActivity : Activity() {
                     myToast = Toast.makeText(this, "Joueur 4 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
+                    onQuestion(drawingView)
                 }
             }
 
@@ -87,4 +93,20 @@ class MainActivity : Activity() {
         super.onResume()
         drawingView.resume()
     }
+
+    fun onQuestion(view : View){
+        QuestionFragment().show(supportFragmentManager, "QuestionFragment")
+    }
+
+    /*fun validerLaQuestion(case: CaseTheme){
+        val validerButton = findViewById<View>(R.id.Repondre)
+        val radioGroupButton = findViewById<View>(R.id.radioGroupReponses)
+
+
+        validerButton.setOnClickListener{
+            val checkedId = radioGroupButton.checkedRadioButton
+            case.question.Valider(checkedId)
+        }
+
+    }*/
 }

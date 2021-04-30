@@ -1,18 +1,39 @@
 <resources>
     <string name="app_name">TP</string>
 
-    <string name="Th1">Histoire</string>
-    <string name="Th2">Sciences</string>
-    <string name="Th3">Divertissement</string>
-    <string name="Th4">Litterature</string>
-    <string name="Th5">Geographie</string>
-    <string name="Th6">Loisir</string>
-
-    <string name="Th2_Q1">Question</string>
-    <string name="Th2_Q1_R1">Réponse1</string>
-    <string name="Th2_Q1_R2">Réponse2</string>
-    <string name="Th2_Q1_R3">Réponse3</string>
     <string name="lance_le_d">Lance le dé</string>
 
+    <string name="Th1">Géographie</string>
 
+    <string name="Th1_Q1">Quelle est la monnaie officielle du Liechtenstein ?</string>
+    <string name="Th1_Q1_R1">Le franc suisse</string>
+    <string name="Th1_Q1_R2">La couronne liechtensteinoise</string>
+    <string name="Th1_Q1_R3">Le dollar américain</string>
+    <string name= "Th1_Q1_R4">L euro</string>
+
+    <string name="Th1_Q2">Quel pays est le premier exportateur de riz au monde ?</string>
+    <string name="Th1_Q2_R1">La Thaïlande</string>
+    <string name="Th1_Q2_R2">L Inde</string>
+    <string name="Th1_Q2_R3">La Chine</string>
+    <string name="Th1_Q2_R4">Le Vietnam</string>
+
+    <string name="Th1_Q3">Quel pays est le plus vulnérable à l élévation du niveau de la mer ?</string>
+    <string name="Th1_Q3_R1">Tuvalu</string>
+    <string name="Th1_Q3_R2">Les îles Fiji</string>
+    <string name="Th1_Q3_R3">Les Pays-Bas</string>
+    <string name="Th1_Q3_R4">Le Kiribati</string>
+
+    <string name="Th2">Arts et littératures</string>
+
+    <string name="Th2_Q1">Quel personnage de la mythologie tombe amoureux de son reflet ?</string>
+    <string name="Th2_Q1_R1">Narcisse</string>
+    <string name="Th2_Q1_R2">Atlas</string>
+    <string name="Th2_Q1_R3">Hercule</string>
+    <string name="Th2_Q1_R4">Janus</string>
+
+    <string name="Th2_Q2">Comment Shakespeare a-t-il prénommé son fils ?</string>
+    <string name="Th2_Q2_R1">Hamnet</string>
+    <string name="Th2_Q2_R2">Henry</string>
+    <string name="Th2_Q2_R3">Hamlet</string>
+    <string name="Th2_Q2_R4">Macbeth</string>
 </resources>
