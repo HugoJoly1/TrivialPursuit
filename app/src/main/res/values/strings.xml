@@ -3,6 +3,10 @@
 
     <string name="lance_le_d">Lance le dé</string>
 
+    <string name="app_name_rules">Trivial Game Règles</string>
+    <string name="app_rules">Le jeu consiste en un jeu de plateau et un jeu de questions ....
+    Il faut terminer la partie avec le plus de points possibles</string>
+
     <string name="Th1">Géographie</string>
 
     <string name="Th1_Q1">Quelle est la monnaie officielle du Liechtenstein ?</string>
@@ -36,4 +40,6 @@
     <string name="Th2_Q2_R2">Henry</string>
     <string name="Th2_Q2_R3">Hamlet</string>
     <string name="Th2_Q2_R4">Macbeth</string>
+
+
 </resources>

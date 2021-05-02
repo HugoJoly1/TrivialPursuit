@@ -82,6 +82,12 @@ class MainActivity : AppCompatActivity() {
             diceImage.setImageResource(drawableResource)
             diceImage.contentDescription = dice.toString()
         }
+
+        val rulesButton: Button = findViewById(R.id.button_rules)
+        rulesButton.setOnClickListener {
+            showRules(drawingView)
+        }
+
     }
 
     override fun onPause() {
@@ -96,6 +102,10 @@ class MainActivity : AppCompatActivity() {
 
     fun onQuestion(view : View){
         QuestionFragment().show(supportFragmentManager, "QuestionFragment")
+    }
+
+    fun showRules(view : View){
+        RulesFragment().show(supportFragmentManager, "RulesFragment")
     }
 
     /*fun validerLaQuestion(case: CaseTheme){
