@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 1 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView,drawingView.lesCases[pion1.position])
+                    onQuestion(drawingView,pion1)
 
                 }
                 compteurJoueur%4 == 1 -> {
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 2 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView,drawingView.lesCases[pion2.position])
+                    onQuestion(drawingView,pion2)
                 }
                 compteurJoueur%4 == 2 -> {
                     res = pion3.joue(cases,dice)
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 3 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView, drawingView.lesCases[pion3.position])
+                    onQuestion(drawingView, pion3)
                 }
                 else -> {
                     res = pion4.joue(cases,dice)
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 4 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView, drawingView.lesCases[pion4.position])
+                    onQuestion(drawingView, pion4)
                 }
             }
 
@@ -100,11 +101,13 @@ class MainActivity : AppCompatActivity() {
         drawingView.resume()
     }
 
-    fun onQuestion(view : View, case:Case){
-
+    fun onQuestion(view : View, pion: Pion){
+        val case = drawingView.lesCases[pion.position]
         if(case is CaseTheme) {
-            QuestionFragment(case.Theme).show(supportFragmentManager, "QuestionFragment")
+            QuestionFragment(pion, case).show(supportFragmentManager, "QuestionFragment")
         }
+        val score = pion.score
+        resultat.text = score.toString()
 
 
     }

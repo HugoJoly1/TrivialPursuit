@@ -7,7 +7,7 @@ import android.graphics.RectF
 import java.util.*
 import kotlin.concurrent.schedule
 
-class Pion(val x1: Float,val y1: Float, val joueur: Int) {
+class Pion(val x1: Float,val y1: Float, val joueur: Int, var score: Int = 0) {
 
     val diametre = 30f
     val r = RectF(x1, y1, x1+diametre, y1+diametre)
@@ -78,6 +78,14 @@ class Pion(val x1: Float,val y1: Float, val joueur: Int) {
             r.offset(0f,0f)
         }
         position -= 1
+    }
+
+    fun bonneReponse(resultat: Boolean): Int{
+
+        if(resultat){
+            score += 1
+        }
+        return score
     }
 
     fun messagePasDeChance(canvas: Canvas?){
