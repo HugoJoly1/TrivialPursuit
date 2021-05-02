@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/couleurfond"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Th1">
+    android:background="#F4511E">
 
 
     <TextView
@@ -35,30 +39,30 @@
             android:id="@+id/Reponse1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="Reponse 1"
-            android:textColor="#000000"
-            android:checked="true"/>
+            android:textColor="#000000" />
 
         <RadioButton
             android:id="@+id/Reponse2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Reponse 2"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
         <RadioButton
             android:id="@+id/Reponse3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Reponse 3"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
         <RadioButton
             android:id="@+id/Reponse4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Reponse 4"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
     </RadioGroup>
 

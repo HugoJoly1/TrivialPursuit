@@ -4,14 +4,12 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 
-class CaseTheme( x1: Float, y1: Float, x2: Float, y2: Float,numero: Int, val listTheme:List<Theme>): Case(x1, y1, x2, y2, numero) {
+class CaseTheme( x1: Float, y1: Float, x2: Float, y2: Float,numero: Int, val Theme:Theme): Case(x1, y1, x2, y2, numero) {
     //On pourrait mettre le listTheme.random() directement lorsqu'on invoque la casetheme dans le plateau view comme ça on fait pas tout passer à chaque fois
 
-    val theme = listTheme.random()
-    val question = theme.Questions.random()
-    val titre = question.enoncé
-    val reponses = question.réponses
-    var couleurFond = Color.parseColor(theme.Couleur)
+
+
+    var couleurFond = Color.parseColor(Theme.Couleur)
     var couleurNum = R.color.black
     val paintNum = Paint()
 

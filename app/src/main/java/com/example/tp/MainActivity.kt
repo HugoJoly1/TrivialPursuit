@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 1 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView)
+                    onQuestion(drawingView,drawingView.lesCases[pion1.position])
 
                 }
                 compteurJoueur%4 == 1 -> {
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 2 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView)
+                    onQuestion(drawingView,drawingView.lesCases[pion2.position])
                 }
                 compteurJoueur%4 == 2 -> {
                     res = pion3.joue(cases,dice)
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 3 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView)
+                    onQuestion(drawingView, drawingView.lesCases[pion3.position])
                 }
                 else -> {
                     res = pion4.joue(cases,dice)
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 4 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView)
+                    onQuestion(drawingView, drawingView.lesCases[pion4.position])
                 }
             }
 
@@ -100,8 +100,13 @@ class MainActivity : AppCompatActivity() {
         drawingView.resume()
     }
 
-    fun onQuestion(view : View){
-        QuestionFragment().show(supportFragmentManager, "QuestionFragment")
+    fun onQuestion(view : View, case:Case){
+
+        if(case is CaseTheme) {
+            QuestionFragment(case.Theme).show(supportFragmentManager, "QuestionFragment")
+        }
+
+
     }
 
     fun showRules(view : View){
