@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import kotlin.concurrent.schedule
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         val dice = Dice(6)
         val rollButton: Button = findViewById(R.id.lanceDe)
         var compteurJoueur = 0
+        var nbrejoueurs = 3
         rollButton.setOnClickListener {
             val pion1 = drawingView.lesPions[0]
             val pion2 = drawingView.lesPions[1]
@@ -35,16 +38,17 @@ class MainActivity : AppCompatActivity() {
             val diceImage: ImageView = findViewById(R.id.imageView)
             val myToast: Toast
             when {
-                compteurJoueur%4 == 0 -> {
+                compteurJoueur%nbrejoueurs == 0 -> {
                     res = pion1.joue(cases,dice)
                     compteurJoueur += 1
                     myToast = Toast.makeText(this, "Joueur 1 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
                     onQuestion(drawingView,pion1)
+                    resultattext.text = pion1.score.toString()
 
                 }
-                compteurJoueur%4 == 1 -> {
+                compteurJoueur%nbrejoueurs == 1 -> {
                     res = pion2.joue(cases,dice)
                     compteurJoueur +=1
                     myToast = Toast.makeText(this, "Joueur 2 a joué", Toast.LENGTH_SHORT)
@@ -52,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                     myToast.show()
                     onQuestion(drawingView,pion2)
                 }
-                compteurJoueur%4 == 2 -> {
+                compteurJoueur%nbrejoueurs == 2 -> {
                     res = pion3.joue(cases,dice)
                     compteurJoueur +=1
                     myToast = Toast.makeText(this, "Joueur 3 a joué", Toast.LENGTH_SHORT)
@@ -101,13 +105,38 @@ class MainActivity : AppCompatActivity() {
         drawingView.resume()
     }
 
-    fun onQuestion(view : View, pion: Pion){
-        val case = drawingView.lesCases[pion.position]
-        if(case is CaseTheme) {
-            QuestionFragment(pion, case).show(supportFragmentManager, "QuestionFragment")
+    fun onQuestion(view : View, pion: Pion){ //le view en attribut n'est pas nécessaire ?
+        var case = drawingView.lesCases[pion.position]
+        var sup = Question("sup", mutableListOf())
+        var index:Int
+        if(case is CaseAction) {
+            Timer().schedule(700) {
+                case = drawingView.lesCases[pion.position]
+                QuestionFragment(pion, case as CaseTheme).show(supportFragmentManager, "QuestionFragment")
+                index= (case as CaseTheme).Theme.Questions.indexOf(sup)
+                for(it in drawingView.lesCases){
+                    if(it is CaseTheme)
+                        if(it.Theme== (case as CaseTheme).Theme)
+                            it.Theme.Questions.remove(sup)
+                }
+
+
+
+            }
         }
-        val score = pion.score
-        resultat.text = score.toString()
+        else{
+            QuestionFragment(pion, case as CaseTheme).show(supportFragmentManager, "QuestionFragment")
+
+            index= (case as CaseTheme).Theme.Questions.indexOf(sup)
+            for(it in drawingView.lesCases){
+                if(it is CaseTheme)
+                    if(it.Theme== (case as CaseTheme).Theme)
+                        it.Theme.Questions.remove(sup)
+            }
+        }
+
+
+
 
 
     }

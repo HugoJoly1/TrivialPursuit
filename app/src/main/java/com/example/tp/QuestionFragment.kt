@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.questions_layout.*
 import kotlinx.android.synthetic.main.questions_layout.view.*
+import kotlin.random.Random
 
 class QuestionFragment(val pion: Pion, val case: CaseTheme) : DialogFragment() {
 
@@ -19,14 +21,14 @@ class QuestionFragment(val pion: Pion, val case: CaseTheme) : DialogFragment() {
 
     }
 
+
     override fun onStart() {
         super.onStart()
         val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
         val height = (resources.displayMetrics.heightPixels * 0.40).toInt()
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
-
-        val theme = case.Theme
-        val question = theme.Questions.random()
+        val rand = Random.nextInt(0, case.Theme.Questions.size-1)
+        val question = case.Theme.Questions[rand]
         val titre = question.enoncé
         val reponses = question.réponses.shuffled()
         textQuestion.text = titre
@@ -34,7 +36,7 @@ class QuestionFragment(val pion: Pion, val case: CaseTheme) : DialogFragment() {
         Reponse2.text = reponses[2]
         Reponse3.text = reponses[3]
         Reponse4.text = reponses[0]
-        couleurfond.setBackgroundColor(Color.parseColor(theme.Couleur))
+        couleurfond.setBackgroundColor(Color.parseColor(case.Theme.Couleur))
 
         lateinit var reponse: String
         Repondre.setOnClickListener {
@@ -47,8 +49,13 @@ class QuestionFragment(val pion: Pion, val case: CaseTheme) : DialogFragment() {
                 R.id.Reponse4 -> reponse = reponses[0]
             }
 
+
             val resultat = question.Valider(reponse)
             pion.bonneReponse(resultat)
+            case.Theme.Questions[rand].enoncé = "sup"
+            case.Theme.Questions[rand].réponses = mutableListOf()
+            dismiss()
+
 
         }
 

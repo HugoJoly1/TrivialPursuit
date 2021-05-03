@@ -8,9 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="Th1">#FFEB3B</color>
-    <color name="Th2">#8BC34A</color>
-    <color name="Th3">#F64C7D</color>
+    <color name="Th2">#B2FF59</color>
+    <color name="Th3">#FF518C</color>
     <color name="Th4">#673AB7</color>
-    <color name="Th5">#03A9F4</color>
-    <color name="Th6">#FF5722</color>
+    <color name="Th5">#64FFDA</color>
+    <color name="Th6">#FF2222</color>
 </resources>

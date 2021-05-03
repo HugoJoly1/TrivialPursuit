@@ -49,7 +49,7 @@ class Load() {
     }
 
 
-    fun StrListload(Nom: String): List<String> {
+    fun StrListload(Nom: String): MutableList<String> {
         val List: MutableList<String> = mutableListOf()
         var str: String = ""
         var i: Int = 1
