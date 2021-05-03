@@ -7,6 +7,8 @@ import android.graphics.RectF
 import java.text.ParsePosition
 import java.util.*
 import kotlin.concurrent.schedule
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 
 class Pion(private val x1: Float,private val y1: Float, private val joueur: Int, private var score: Int = 0) {
 
@@ -51,19 +53,19 @@ class Pion(private val x1: Float,private val y1: Float, private val joueur: Int,
 
     }
 
-    private fun reculeCase(caseDebut: Case){
+    private fun reculeCase(caseDebut: Case) {
         val dx = 200f
         val dy = 200f
         val numero = caseDebut.caseDonneNumero()
 
-        if (numero in 1..3 || numero in 11..13){
-            r.offset(-dx,0f)
-        } else if(numero in 4..5 || numero in 9..10 || numero in 14..15){
-            r.offset(0f,-dy)
-        } else if(numero in 6..8|| numero in 16..18){
+        if (numero in 1..3 || numero in 11..13) {
+            r.offset(-dx, 0f)
+        } else if (numero in 4..5 || numero in 9..10 || numero in 14..15) {
+            r.offset(0f, -dy)
+        } else if (numero in 6..8 || numero in 16..18) {
             r.offset(dx, 0f)
-        } else{
-            r.offset(0f,0f)
+        } else {
+            r.offset(0f, 0f)
         }
         position -= 1
     }
@@ -71,8 +73,9 @@ class Pion(private val x1: Float,private val y1: Float, private val joueur: Int,
     fun joue(cases: Array<Case>, dice: Dice): Int{
         var resultatDe = dice.roll()
         for(i in 1..resultatDe){
-            if(position< cases.size)
+            if(position< cases.size) {
                 avance(cases[position])
+            }
         }
         if (cases[position] is CaseAction){
             //var myToast: Toast
