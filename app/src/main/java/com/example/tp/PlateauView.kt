@@ -17,7 +17,7 @@ class PlateauView @JvmOverloads constructor (context: Context,
     lateinit var canvas: Canvas
 
     val backgroundPaint = Paint()
-    var listTheme = Load().Themeload()
+    var listTheme = Load().themeLoad()
     var drawing: Boolean = true
 
 
@@ -106,6 +106,4 @@ class PlateauView @JvmOverloads constructor (context: Context,
     override fun surfaceDestroyed(holder: SurfaceHolder) {
         thread.join()
     }
-
-
 }

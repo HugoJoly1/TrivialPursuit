@@ -1,4 +1,17 @@
 package com.example.tp
 
-class Theme (val Nom: String, val Couleur: String, val Questions: MutableList<Question>){
+class Theme (private val nom: String, private val couleur: String,
+             private val questions: MutableList<Question>){
+
+    fun themeDonneNom(): String{
+        return nom
+    }
+
+    fun themeDonneQuestions(): MutableList<Question>{
+        return questions
+    }
+
+    fun themeDonneCouleur(): String{
+        return couleur
+    }
 }

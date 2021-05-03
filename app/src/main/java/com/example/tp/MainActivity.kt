@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
                     onQuestion(drawingView,pion1)
-                    resultattext.text = pion1.score.toString()
+                    resultattext.text = pion1.pionDonneScore().toString()
 
                 }
                 compteurJoueur%nbrejoueurs == 1 -> {
@@ -106,18 +106,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onQuestion(view : View, pion: Pion){ //le view en attribut n'est pas nécessaire ?
-        var case = drawingView.lesCases[pion.position]
+        var case = drawingView.lesCases[pion.pionDonnePosition()]
         var sup = Question("sup", mutableListOf())
         var index:Int
         if(case is CaseAction) {
             Timer().schedule(700) {
-                case = drawingView.lesCases[pion.position]
+                case = drawingView.lesCases[pion.pionDonnePosition()]
                 QuestionFragment(pion, case as CaseTheme).show(supportFragmentManager, "QuestionFragment")
-                index= (case as CaseTheme).Theme.Questions.indexOf(sup)
+                index= (case as CaseTheme).caseThemeDonneTheme().themeDonneQuestions().indexOf(sup)
                 for(it in drawingView.lesCases){
                     if(it is CaseTheme)
-                        if(it.Theme== (case as CaseTheme).Theme)
-                            it.Theme.Questions.remove(sup)
+                        if(it.caseThemeDonneTheme()== (case as CaseTheme).caseThemeDonneTheme())
+                            it.caseThemeDonneTheme().themeDonneQuestions().remove(sup)
                 }
 
 
@@ -127,11 +127,11 @@ class MainActivity : AppCompatActivity() {
         else{
             QuestionFragment(pion, case as CaseTheme).show(supportFragmentManager, "QuestionFragment")
 
-            index= (case as CaseTheme).Theme.Questions.indexOf(sup)
+            index= (case as CaseTheme).caseThemeDonneTheme().themeDonneQuestions().indexOf(sup)
             for(it in drawingView.lesCases){
                 if(it is CaseTheme)
-                    if(it.Theme== (case as CaseTheme).Theme)
-                        it.Theme.Questions.remove(sup)
+                    if(it.caseThemeDonneTheme()== (case as CaseTheme).caseThemeDonneTheme())
+                        it.caseThemeDonneTheme().themeDonneQuestions().remove(sup)
             }
         }
 

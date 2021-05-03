@@ -13,27 +13,27 @@ class Load() {
 
     var context: Context = MainApplication.applicationContext()
 
-    fun Stringload(Nom: String): String {
-        val id:Int = context.getResources().getIdentifier( Nom, "string", context.getPackageName())
+    fun stringLoad(nom: String): String {
+        val id:Int = context.getResources().getIdentifier(nom, "string", context.getPackageName())
         return if (id==0) {
             ""
         } else {
             context.getString(id)
         }
     }
-    fun Themeload(): List<Theme> {
+    fun themeLoad(): List<Theme> {
         val Thèmes: MutableList<Theme> = mutableListOf()
         var Enoncé: String
-        val temp = StrListload("Th")
+        val temp = strListLoad("Th")
         for(i in 1..temp.size){
             var list: MutableList<Question> = mutableListOf()
             var j: Int = 1
             while(true){
-                Enoncé = Stringload("Th${i}_Q${j}")
+                Enoncé = stringLoad("Th${i}_Q${j}")
                 val i1 = if (Enoncé == "")
                     break
                 else {
-                    list.add(Question(Enoncé, StrListload("Th${i}_Q${j}_R")))
+                    list.add(Question(Enoncé, strListLoad("Th${i}_Q${j}_R")))
                     j++
                 }
             }
@@ -49,12 +49,12 @@ class Load() {
     }
 
 
-    fun StrListload(Nom: String): MutableList<String> {
+    fun strListLoad(Nom: String): MutableList<String> {
         val List: MutableList<String> = mutableListOf()
         var str: String = ""
         var i: Int = 1
         while(true){
-            str=Stringload("${Nom}${i}")
+            str=stringLoad("${Nom}${i}")
             if(str == "")
                 break
             else{

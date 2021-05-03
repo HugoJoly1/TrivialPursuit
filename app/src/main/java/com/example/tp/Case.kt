@@ -4,13 +4,17 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
 
-abstract class Case(val x1: Float, val y1: Float, val x2: Float, val  y2: Float, val numero: Int) {
+abstract class Case(protected val x1: Float, protected val y1: Float,
+                    protected val x2: Float, protected val  y2: Float,
+                    protected val numero: Int) {
 
-    val r = RectF(x1, y1, x2, y2) // RectF(gauche, haut, droite, bas)
-    val paint = Paint()
+    protected val r = RectF(x1, y1, x2, y2) // RectF(gauche, haut, droite, bas)
+    protected val paint = Paint()
 
 
-    open fun draw(canvas: Canvas) {
+    abstract fun draw(canvas: Canvas)
 
+    fun caseDonneNumero(): Int{
+        return numero
     }
 }

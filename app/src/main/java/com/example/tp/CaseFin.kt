@@ -6,10 +6,10 @@ import android.graphics.Paint
 
 class CaseFin(x1: Float, y1: Float, x2: Float, y2: Float, numero: Int) : Case(x1, y1, x2, y2, numero) {
 
-    val nom = "Arrivée"
-    val couleurFond = Color.argb(255, 254, 254, 226)
-    val couleurTexte = Color.BLACK
-    val paintText = Paint()
+    private val nom = "Arrivée"
+    private val couleurFond = Color.argb(255, 254, 254, 226)
+    private val couleurTexte = Color.BLACK
+    private val paintText = Paint()
 
     override fun draw(canvas: Canvas) {
         paint.color = couleurFond
@@ -19,9 +19,4 @@ class CaseFin(x1: Float, y1: Float, x2: Float, y2: Float, numero: Int) : Case(x1
         canvas.drawText(nom, this.x1+10f, this.y2+50f, paintText)
     }
 
-    fun gagne(){
-        // Trouver comment faire apparaitre le fragment
-        //GameWinDialogFragment.show()
-
-    }
 }

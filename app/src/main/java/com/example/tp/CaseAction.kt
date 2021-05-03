@@ -6,13 +6,12 @@ import android.graphics.Paint
 
 class CaseAction(x1: Float, y1: Float, x2: Float, y2: Float, numero: Int): Case(x1, y1, x2, y2, numero) {
 
-    val couleurFond = Color.argb(255, 187, 172, 172)
-    val couleurNum = Color.BLACK
-    val paintNum = Paint()
-    val paintText = Paint()
+    private val couleurFond = Color.argb(255, 187, 172, 172)
+    private val couleurNum = Color.BLACK
+    private val paintNum = Paint()
+    private val paintText = Paint()
 
     override fun draw(canvas: Canvas){
-        super.draw(canvas)
         paint.color = couleurFond
         paintNum.color = couleurNum
         paintNum.textSize = 50f

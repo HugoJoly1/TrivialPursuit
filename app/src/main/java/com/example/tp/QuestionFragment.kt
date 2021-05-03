@@ -27,16 +27,17 @@ class QuestionFragment(val pion: Pion, val case: CaseTheme) : DialogFragment() {
         val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
         val height = (resources.displayMetrics.heightPixels * 0.40).toInt()
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
-        val rand = Random.nextInt(0, case.Theme.Questions.size-1)
-        val question = case.Theme.Questions[rand]
-        val titre = question.enoncé
-        val reponses = question.réponses.shuffled()
+        val rand = Random.nextInt(0, case.caseThemeDonneTheme().themeDonneQuestions().size-1)
+        val question = case.caseThemeDonneTheme().themeDonneQuestions()[rand]
+        var titre = question.questionDonneEnonce()
+        var reponses = question.questionDonneReponses()
         textQuestion.text = titre
         Reponse1.text = reponses[1]
         Reponse2.text = reponses[2]
         Reponse3.text = reponses[3]
         Reponse4.text = reponses[0]
-        couleurfond.setBackgroundColor(Color.parseColor(case.Theme.Couleur))
+        couleurfond.setBackgroundColor(Color.parseColor(case.caseThemeDonneTheme().themeDonneCouleur()))
+        textTheme.text = case.caseThemeDonneTheme().themeDonneNom()
 
         lateinit var reponse: String
         Repondre.setOnClickListener {
@@ -52,14 +53,11 @@ class QuestionFragment(val pion: Pion, val case: CaseTheme) : DialogFragment() {
 
             val resultat = question.Valider(reponse)
             pion.bonneReponse(resultat)
-            case.Theme.Questions[rand].enoncé = "sup"
-            case.Theme.Questions[rand].réponses = mutableListOf()
+            case.caseThemeDonneTheme().themeDonneQuestions()[rand].questionChangeEnonce("sup")
+            case.caseThemeDonneTheme().themeDonneQuestions()[rand].questionChangeReponses(mutableListOf())
             dismiss()
 
 
         }
-
-
-
     }
 }
