@@ -10,7 +10,7 @@ class GagneFragment: DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         getDialog()!!.getWindow()?.setBackgroundDrawableResource(R.drawable.round_corner)
-        return inflater.inflate(R.layout.questions_layout, container, false)
+        return inflater.inflate(R.layout.gagne_layout, container, false)
     }
 
     override fun onStart() {

@@ -27,8 +27,10 @@ class MainActivity : AppCompatActivity() {
         val dice = Dice(6)
         val rollButton: Button = findViewById(R.id.lanceDe)
         var compteurJoueur = 0
-        var nbrejoueurs = 3
+        var nbrejoueurs = 2
+
         rollButton.setOnClickListener {
+
             val pion1 = drawingView.lesPions[0]
             val pion2 = drawingView.lesPions[1]
             val pion3 = drawingView.lesPions[2]
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             val res: Int
             val diceImage: ImageView = findViewById(R.id.imageView)
             val myToast: Toast
+
             when {
                 compteurJoueur%nbrejoueurs == 0 -> {
                     res = pion1.joue(cases,dice)
@@ -44,8 +47,13 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 1 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView,pion1)
-                    resultattext.text = pion1.pionDonneScore().toString()
+                    if(cases[pion1.pionDonnePosition()] !is CaseFin) {
+                        onQuestion(drawingView, pion1)
+                        resultattext.text = pion1.pionDonneScore().toString()
+                    }
+                    else if(cases[pion1.pionDonnePosition()] is CaseFin){
+                        onGagne(drawingView)
+                    }
 
                 }
                 compteurJoueur%nbrejoueurs == 1 -> {
@@ -54,7 +62,13 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 2 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView,pion2)
+                    if(cases[pion2.pionDonnePosition()] !is CaseFin) {
+                        onQuestion(drawingView, pion2)
+                    }
+                    else if(cases[pion2.pionDonnePosition()] is CaseFin){
+                        onGagne(drawingView)
+                    }
+
                 }
                 compteurJoueur%nbrejoueurs == 2 -> {
                     res = pion3.joue(cases,dice)
@@ -62,7 +76,12 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 3 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView, pion3)
+                    if(cases[pion3.pionDonnePosition()] !is CaseFin) {
+                        onQuestion(drawingView, pion3)
+                    }
+                    else if(cases[pion3.pionDonnePosition()] is CaseFin){
+                        onGagne(drawingView)
+                    }
                 }
                 else -> {
                     res = pion4.joue(cases,dice)
@@ -70,7 +89,12 @@ class MainActivity : AppCompatActivity() {
                     myToast = Toast.makeText(this, "Joueur 4 a joué", Toast.LENGTH_SHORT)
                     myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,600)
                     myToast.show()
-                    onQuestion(drawingView, pion4)
+                    if(cases[pion4.pionDonnePosition()] !is CaseFin) {
+                        onQuestion(drawingView, pion4)
+                    }
+                    else if(cases[pion4.pionDonnePosition()] is CaseFin){
+                        onGagne(drawingView)
+                    }
                 }
             }
 
@@ -134,26 +158,13 @@ class MainActivity : AppCompatActivity() {
                         it.caseThemeDonneTheme().themeDonneQuestions().remove(sup)
             }
         }
-
-
-
-
-
     }
 
     fun showRules(view : View){
         RulesFragment().show(supportFragmentManager, "RulesFragment")
     }
 
-    /*fun validerLaQuestion(case: CaseTheme){
-        val validerButton = findViewById<View>(R.id.Repondre)
-        val radioGroupButton = findViewById<View>(R.id.radioGroupReponses)
-
-
-        validerButton.setOnClickListener{
-            val checkedId = radioGroupButton.checkedRadioButton
-            case.question.Valider(checkedId)
-        }
-
-    }*/
+    fun onGagne(view: View){
+        GagneFragment().show(supportFragmentManager, "GagneFragment")
+    }
 }

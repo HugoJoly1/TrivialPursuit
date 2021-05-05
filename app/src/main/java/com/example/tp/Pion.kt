@@ -70,24 +70,63 @@ class Pion(private val x1: Float,private val y1: Float, private val joueur: Int,
         position -= 1
     }
 
+    fun stop(case: Case){
+        r.offset(0f,0f)
+    }
+
     fun joue(cases: Array<Case>, dice: Dice): Int{
+
         var resultatDe = dice.roll()
-        for(i in 1..resultatDe){
-            if(position< cases.size) {
-                avance(cases[position])
+        if (position + resultatDe <= cases.size){
+            for(i in 1..resultatDe){
+                if(position< cases.size) {
+                    avance(cases[position])
+                }
+                else{
+                    break
+                }
+            }
+            if (cases[position] is CaseAction){
+                //var myToast: Toast
+
+                Timer().schedule(600) {
+                    reculeCase(cases[position])
+                    //myToast = Toast.makeText(this, "Pas de chance! Recule d'une case", Toast.LENGTH_LONG)
+                    //myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,0)
+                    //myToast.show()
+                }
+
+            }
+            else if(cases[position] is CaseFin){
+                stop(cases[position])
             }
         }
-        if (cases[position] is CaseAction){
-            //var myToast: Toast
+        else{
+           for(i in 1..(cases.size-position-1)){
+               if(position< cases.size) {
+                   avance(cases[position])
+               }
+               else{
+                   break
+               }
+           }
+            if (cases[position] is CaseAction){
+                //var myToast: Toast
 
-            Timer().schedule(600) {
-                reculeCase(cases[position])
-                //myToast = Toast.makeText(this, "Pas de chance! Recule d'une case", Toast.LENGTH_LONG)
-                //myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,0)
-                //myToast.show()
+                Timer().schedule(600) {
+                    reculeCase(cases[position])
+                    //myToast = Toast.makeText(this, "Pas de chance! Recule d'une case", Toast.LENGTH_LONG)
+                    //myToast.setGravity(Gravity.CENTER_HORIZONTAL,0,0)
+                    //myToast.show()
+                }
+
+            }
+            else if(cases[position] is CaseFin){
+                stop(cases[position])
             }
 
         }
+
         return resultatDe
     }
 
