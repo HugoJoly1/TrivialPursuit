@@ -771,8 +771,9 @@
     <string name="lance_le_d">Lance le dé</string>
 
     <string name="app_name_rules">Trivial Game Règles</string>
-    <string name="app_rules">Le jeu consiste en un jeu de plateau et un jeu de questions ....
-    Il faut terminer la partie avec le plus de points possibles</string>
+    <string name="app_rules">Répondez correctement aux questions pour gagner des points.
+        La partie se termine dès qu un joueur arrive sur la case finale.
+        Le joueur avec le plus de points a gagné !</string>
 
 
 

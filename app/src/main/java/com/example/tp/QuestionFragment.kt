@@ -51,7 +51,7 @@ class QuestionFragment(val pion: Pion, val case: CaseTheme) : DialogFragment() {
             }
 
 
-            val resultat = question.Valider(reponse)
+            val resultat = question.valider(reponse)
             pion.bonneReponse(resultat)
             case.caseThemeDonneTheme().themeDonneQuestions()[rand].questionChangeEnonce("sup")
             case.caseThemeDonneTheme().themeDonneQuestions()[rand].questionChangeReponses(mutableListOf())

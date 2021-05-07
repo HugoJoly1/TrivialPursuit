@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val dice = Dice(6)
         val rollButton: Button = findViewById(R.id.lanceDe)
         var compteurJoueur = 0
-        var nbrejoueurs = 2
+        var nbrejoueurs = 4
 
         rollButton.setOnClickListener {
 
@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
                     myToast.show()
                     if(cases[pion1.pionDonnePosition()] !is CaseFin) {
                         onQuestion(drawingView, pion1)
-                        resultattext.text = pion1.pionDonneScore().toString()
                     }
                     else if(cases[pion1.pionDonnePosition()] is CaseFin){
                         onGagne(drawingView)
@@ -165,6 +164,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onGagne(view: View){
-        GagneFragment().show(supportFragmentManager, "GagneFragment")
+        GagneFragment(drawingView.lesPions).show(supportFragmentManager, "GagneFragment")
     }
 }

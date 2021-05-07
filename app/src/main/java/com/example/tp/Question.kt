@@ -2,7 +2,7 @@ package com.example.tp
 
 data class Question (private var enoncé:String, private var réponses: List<String> ) {
 
-    fun Valider (reponse: String): Boolean {
+    fun valider (reponse: String): Boolean {
         return reponse==réponses[0]
     }
 
