@@ -77,7 +77,7 @@ class Pion(private val x1: Float,private val y1: Float, private val joueur: Int,
     fun joue(cases: Array<Case>, dice: Dice): Int{
 
         var resultatDe = dice.roll()
-        if (position + resultatDe <= cases.size){
+        if (position + resultatDe <= cases.size-1){
             for(i in 1..resultatDe){
                 if(position< cases.size) {
                     avance(cases[position])

@@ -30,7 +30,7 @@ class QuestionFragment(val pion: Pion, val case: CaseTheme) : DialogFragment() {
         val rand = Random.nextInt(0, case.caseThemeDonneTheme().themeDonneQuestions().size-1)
         val question = case.caseThemeDonneTheme().themeDonneQuestions()[rand]
         var titre = question.questionDonneEnonce()
-        var reponses = question.questionDonneReponses()
+        var reponses = question.questionDonneReponses().shuffled()
         textQuestion.text = titre
         Reponse1.text = reponses[1]
         Reponse2.text = reponses[2]
